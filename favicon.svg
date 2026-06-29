@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Glyph Hold">
+  <rect width="64" height="64" rx="12" fill="#171913"/>
+  <path d="M32 8 51 18v14c0 12.5-7.4 20.3-19 24-11.6-3.7-19-11.5-19-24V18L32 8Z" fill="none" stroke="#DDE392" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M25 32h14M32 25v14" stroke="#AFBE8F" stroke-width="4" stroke-linecap="round"/>
+</svg>

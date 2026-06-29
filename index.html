@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Glyph Hold - Local Memory and Secrets for AI Agents</title>
+    <meta
+      name="description"
+      content="Glyph Hold is a self-hosted memory and secrets service for AI agents. Store durable context, encrypted secrets, API keys, and audit history without hosted AI services."
+    />
+    <meta name="theme-color" content="#171913" />
+    <meta property="og:title" content="Glyph Hold" />
+    <meta
+      property="og:description"
+      content="Self-hosted memory and secrets for AI agents. Local, deterministic, inspectable, and currently in beta."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://glyphhold.com" />
+    <meta property="og:image" content="https://glyphhold.com/assets/glyphhold-dashboard-preview.png" />
+    <link rel="canonical" href="https://glyphhold.com" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Glyph Hold home">
+        <span class="brand-mark" aria-hidden="true">GH</span>
+        <span>Glyph Hold</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#why">Why</a>
+        <a href="#install">Install</a>
+        <a href="#mcp">MCP</a>
+        <a href="https://github.com/Dosk3n/glyphhold">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <img
+          class="hero-image"
+          src="assets/glyphhold-dashboard-preview.png"
+          alt="Glyph Hold dashboard preview showing memories, encrypted secrets, API keys, and audit events"
+        />
+        <div class="hero-shade" aria-hidden="true"></div>
+        <div class="hero-content">
+          <div class="status-pill">
+            <span class="status-dot" aria-hidden="true"></span>
+            Beta now, moving quickly
+          </div>
+          <h1 id="hero-title">Glyph Hold</h1>
+          <p class="hero-copy">
+            A self-hosted memory and secrets service for AI agents. Keep durable context,
+            encrypted credentials, API keys, and audit history under your control.
+          </p>
+          <div class="hero-actions" aria-label="Project links">
+            <a class="button primary" href="https://github.com/Dosk3n/glyphhold">View Glyph Hold</a>
+            <a class="button secondary" href="#install">Install with Docker</a>
+          </div>
+          <dl class="hero-facts" aria-label="Glyph Hold facts">
+            <div>
+              <dt>No hosted AI</dt>
+              <dd>No LLM calls, embeddings, vector DBs, or paid APIs inside Glyph Hold.</dd>
+            </div>
+            <div>
+              <dt>Agent ready</dt>
+              <dd>HTTP API, API keys, MCP connector, and deterministic SQLite FTS5 search.</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="intro-band" aria-label="Project summary">
+        <div class="band-inner">
+          <p>
+            Glyph Hold gives agents a shared place to remember the things that should survive
+            the current chat: project context, procedures, preferences, decisions, and secrets
+            that should only be revealed when explicitly requested.
+          </p>
+          <a href="https://github.com/Dosk3n/glyphhold/releases">Follow the beta releases</a>
+        </div>
+      </section>
+
+      <section id="why" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Why It Exists</p>
+          <h2>Memory that stays local, searchable, and inspectable.</h2>
+          <p>
+            Agents are useful when they remember stable context. Glyph Hold keeps that memory
+            separate from the model, visible in a dashboard, and reachable through a simple API.
+          </p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature">
+            <span class="feature-icon" aria-hidden="true">01</span>
+            <h3>Durable memories</h3>
+            <p>
+              Store notes, decisions, procedures, project facts, people, preferences, and
+              temporary context with categories, tags, confidence, and revision history.
+            </p>
+          </article>
+          <article class="feature">
+            <span class="feature-icon" aria-hidden="true">02</span>
+            <h3>Encrypted secrets</h3>
+            <p>
+              Store operational secrets encrypted at rest and reveal values only through
+              explicit reveal endpoints. Secret values stay out of memory prefetch.
+            </p>
+          </article>
+          <article class="feature">
+            <span class="feature-icon" aria-hidden="true">03</span>
+            <h3>Agent access</h3>
+            <p>
+              Create scoped API keys from the dashboard, then connect agents over HTTP or
+              through the standalone Glyph Hold MCP server.
+            </p>
+          </article>
+          <article class="feature">
+            <span class="feature-icon" aria-hidden="true">04</span>
+            <h3>Simple self-hosting</h3>
+            <p>
+              Run it with Docker on port 5995. Data lives in SQLite, search uses SQLite FTS5,
+              and the dashboard handles first-run setup.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section split" aria-label="Current status">
+        <div>
+          <p class="eyebrow">Current Status</p>
+          <h2>Beta software, usable today, improving fast.</h2>
+        </div>
+        <div class="status-panel">
+          <p>
+            Glyph Hold is already suitable for local agent memory experiments and practical
+            self-hosted use. It is still beta, so keep backups of the mounted data directory
+            and encryption key before upgrading.
+          </p>
+          <div class="check-list" aria-label="Current capabilities">
+            <span>Docker image</span>
+            <span>Web dashboard</span>
+            <span>API keys</span>
+            <span>Memory revisions</span>
+            <span>Secret reveal controls</span>
+            <span>MCP connector</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="install" class="section install-section">
+        <div class="section-heading compact">
+          <p class="eyebrow">Install</p>
+          <h2>Run Glyph Hold with Docker.</h2>
+          <p>
+            Start locally, create the first dashboard account, then generate an API key for
+            your agent.
+          </p>
+        </div>
+
+        <div class="install-grid">
+          <article class="code-panel">
+            <div class="panel-title">
+              <h3>One-line start</h3>
+              <button class="copy-button" type="button" data-copy-target="docker-command">Copy</button>
+            </div>
+            <pre id="docker-command"><code>GLYPHHOLD_KEY="$(openssl rand -hex 32)" &amp;&amp; docker run -d --name glyphhold --restart unless-stopped -p 5995:5995 -v glyphhold-data:/data -e GLYPHHOLD_DB_PATH=/data/glyphhold.sqlite -e GLYPHHOLD_ENCRYPTION_KEY="$GLYPHHOLD_KEY" ghcr.io/dosk3n/glyphhold:0.2.0-beta &amp;&amp; printf 'Save this Glyph Hold encryption key: %s\n' "$GLYPHHOLD_KEY"</code></pre>
+          </article>
+
+          <article class="code-panel">
+            <div class="panel-title">
+              <h3>Docker Compose</h3>
+              <button class="copy-button" type="button" data-copy-target="compose-command">Copy</button>
+            </div>
+            <pre id="compose-command"><code>services:
+  glyphhold:
+    image: ghcr.io/dosk3n/glyphhold:0.2.0-beta
+    container_name: glyphhold
+    ports:
+      - "5995:5995"
+    volumes:
+      - ./data:/data
+    environment:
+      GLYPHHOLD_DB_PATH: /data/glyphhold.sqlite
+      GLYPHHOLD_ENCRYPTION_KEY: change-this-to-a-long-random-value
+    restart: unless-stopped</code></pre>
+          </article>
+        </div>
+
+        <ol class="steps">
+          <li>Open <code>http://localhost:5995</code>.</li>
+          <li>Create the first dashboard username and password.</li>
+          <li>Create an agent API key from the dashboard.</li>
+          <li>Connect your agent directly over HTTP or through MCP.</li>
+        </ol>
+      </section>
+
+      <section id="mcp" class="section mcp-section">
+        <div class="section-heading">
+          <p class="eyebrow">MCP Connector</p>
+          <h2>Use Glyph Hold from Codex and other MCP clients.</h2>
+          <p>
+            The standalone MCP repo connects to Glyph Hold through the public HTTP API. It can
+            search memories, prefetch context, create and update memory, restore revisions,
+            manage secret metadata, and reveal secret values only when explicitly requested.
+          </p>
+        </div>
+        <div class="repo-links">
+          <a class="repo-link" href="https://github.com/Dosk3n/glyphhold">
+            <span>Main project</span>
+            <strong>github.com/Dosk3n/glyphhold</strong>
+          </a>
+          <a class="repo-link" href="https://github.com/Dosk3n/glyphhold-mcp">
+            <span>MCP connector</span>
+            <strong>github.com/Dosk3n/glyphhold-mcp</strong>
+          </a>
+        </div>
+      </section>
+
+      <section class="section roadmap-section">
+        <div class="section-heading compact">
+          <p class="eyebrow">Roadmap</p>
+          <h2>What is coming next.</h2>
+        </div>
+        <div class="timeline">
+          <div>
+            <span>Now</span>
+            <p>Beta releases, Docker setup, dashboard, memories, secrets, API keys, MCP.</p>
+          </div>
+          <div>
+            <span>Next</span>
+            <p>More polish, stronger recovery flows, clearer docs, and broader agent examples.</p>
+          </div>
+          <div>
+            <span>Then</span>
+            <p>A stable v1 for people who want dependable self-hosted memory for agents.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Glyph Hold is open source under the MIT License.</span>
+      <div>
+        <a href="https://github.com/Dosk3n/glyphhold">Glyph Hold</a>
+        <a href="https://github.com/Dosk3n/glyphhold-mcp">MCP</a>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
