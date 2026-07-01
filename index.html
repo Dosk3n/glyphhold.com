@@ -3,23 +3,104 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Glyph Hold - Local Memory and Secrets for AI Agents</title>
+    <title>Glyph Hold - Self-Hosted AI Agent Memory for Hermes, Codex and MCP</title>
     <meta
       name="description"
-      content="Glyph Hold is a self-hosted memory and secrets service for AI agents. Store durable context, encrypted secrets, API keys, and audit history without hosted AI services."
+      content="Glyph Hold is a free open-source, self-hosted memory and secrets service for AI agents, including Hermes Agent, Codex through MCP, and custom local assistants."
     />
+    <meta
+      name="keywords"
+      content="AI agent memory, self-hosted AI memory, Hermes Agent memory, Codex MCP memory, MCP memory server, open source agent memory, local AI agent memory, AI secrets vault"
+    />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta name="theme-color" content="#171913" />
     <meta property="og:title" content="Glyph Hold" />
     <meta
       property="og:description"
-      content="Self-hosted memory and secrets for AI agents. Local, deterministic, inspectable, Docker-ready, and agent-friendly."
+      content="Free open-source, self-hosted memory and secrets for AI agents. Built for Hermes Agent, Codex through MCP, and local assistant workflows."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://glyphhold.com" />
     <meta property="og:image" content="https://glyphhold.com/assets/glyphhold-dashboard-preview.png" />
+    <meta property="og:site_name" content="Glyph Hold" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Glyph Hold - Self-Hosted AI Agent Memory" />
+    <meta
+      name="twitter:description"
+      content="Self-host durable memories and encrypted secrets for Hermes Agent, Codex MCP, and other AI agents."
+    />
+    <meta name="twitter:image" content="https://glyphhold.com/assets/glyphhold-dashboard-preview.png" />
     <link rel="canonical" href="https://glyphhold.com" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Glyph Hold",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Linux, Docker",
+        "description": "Glyph Hold is a free open-source, self-hosted memory and secrets service for AI agents, including Hermes Agent, Codex through MCP, and custom local assistants.",
+        "url": "https://glyphhold.com",
+        "image": "https://glyphhold.com/assets/glyphhold-dashboard-preview.png",
+        "softwareVersion": "1.0.0",
+        "license": "https://opensource.org/license/mit",
+        "isAccessibleForFree": true,
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "codeRepository": "https://github.com/Dosk3n/glyphhold",
+        "sameAs": [
+          "https://github.com/Dosk3n/glyphhold",
+          "https://github.com/Dosk3n/glyphhold-mcp",
+          "https://github.com/Dosk3n/hermes-memory-glyphhold"
+        ],
+        "featureList": [
+          "Self-hosted AI agent memory",
+          "Hermes Agent memory provider",
+          "Codex MCP connector",
+          "Encrypted secret storage",
+          "SQLite FTS5 memory search",
+          "Docker deployment",
+          "Scoped API keys",
+          "Memory revision history"
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Can Glyph Hold provide memory for Hermes Agent?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Glyph Hold has a standalone Hermes memory provider plugin that lets Hermes prefetch memories and use Glyph Hold memory and secret tools through the public HTTP API."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can Glyph Hold work with Codex?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Codex can use Glyph Hold through the standalone Glyph Hold MCP server, which exposes memory search, prefetch, create, update, revision, and secret tools."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Glyph Hold free and self-hosted?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Glyph Hold is open source under the MIT License and can be self-hosted with Docker. It does not require hosted AI APIs, vector databases, embeddings, or paid APIs."
+            }
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <header class="site-header">
@@ -51,8 +132,9 @@
           </div>
           <h1 id="hero-title">Glyph Hold</h1>
           <p class="hero-copy">
-            A self-hosted memory and secrets service for AI agents. Keep durable context,
-            encrypted credentials, API keys, and audit history under your control.
+            A free, open-source, self-hosted memory and secrets service for AI agents.
+            Give Hermes Agent, Codex MCP, and local assistants durable context, encrypted
+            credentials, API keys, and audit history under your control.
           </p>
           <div class="hero-actions" aria-label="Project links">
             <a class="button primary" href="https://github.com/Dosk3n/glyphhold">View Glyph Hold</a>
@@ -76,7 +158,8 @@
           <p>
             Glyph Hold gives agents a shared place to remember the things that should survive
             the current chat: project context, procedures, preferences, decisions, and secrets
-            that should only be revealed when explicitly requested.
+            that should only be revealed when explicitly requested. It is built for people
+            looking for local AI agent memory that can be self-hosted for free.
           </p>
           <a href="https://github.com/Dosk3n/glyphhold">View the project on GitHub</a>
         </div>
@@ -87,8 +170,9 @@
           <p class="eyebrow">Why It Exists</p>
           <h2>Memory that stays local, searchable, and inspectable.</h2>
           <p>
-            Agents are useful when they remember stable context. Glyph Hold keeps that memory
-            separate from the model, visible in a dashboard, and reachable through a simple API.
+            Agents are useful when they remember stable context. Glyph Hold keeps AI agent
+            memory separate from the model, visible in a dashboard, and reachable through a
+            simple API.
           </p>
         </div>
         <div class="feature-grid">
@@ -122,6 +206,52 @@
             <p>
               Run it with Docker on port 5995. Data lives in SQLite, search uses SQLite FTS5,
               and the dashboard handles first-run setup.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section seo-section" aria-label="Agent memory use cases">
+        <div class="section-heading compact">
+          <p class="eyebrow">Use Cases</p>
+          <h2>Self-hosted memory for AI agents, assistants, and toolchains.</h2>
+          <p>
+            Glyph Hold is designed for developers and power users who want agent memory without
+            handing private context to a hosted service. Run it locally, connect agents with API
+            keys, and keep the memory database and encryption key in your own environment.
+          </p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature compact-feature">
+            <span class="feature-icon" aria-hidden="true">HM</span>
+            <h3>Hermes Agent memory</h3>
+            <p>
+              Use the Hermes memory provider plugin to make Glyph Hold the external memory
+              source for Hermes Agent, with prefetch and explicit memory tools.
+            </p>
+          </article>
+          <article class="feature compact-feature">
+            <span class="feature-icon" aria-hidden="true">MC</span>
+            <h3>Codex MCP memory</h3>
+            <p>
+              Connect Codex and other MCP clients through the Glyph Hold MCP server for
+              searchable memories, revision restore, and managed secret access.
+            </p>
+          </article>
+          <article class="feature compact-feature">
+            <span class="feature-icon" aria-hidden="true">LH</span>
+            <h3>Local assistant memory</h3>
+            <p>
+              Give custom agents and local assistants a deterministic HTTP API for durable
+              project context, user preferences, procedures, and operational notes.
+            </p>
+          </article>
+          <article class="feature compact-feature">
+            <span class="feature-icon" aria-hidden="true">OS</span>
+            <h3>Free open-source hosting</h3>
+            <p>
+              Run Glyph Hold with Docker and SQLite. No hosted AI service, vector database,
+              embedding provider, or paid API is required by Glyph Hold itself.
             </p>
           </article>
         </div>
@@ -263,6 +393,45 @@
             <span>Then</span>
             <p>More integrations and operational polish for dependable self-hosted agent memory.</p>
           </div>
+        </div>
+      </section>
+
+      <section class="section faq-section" aria-label="Frequently asked questions">
+        <div class="section-heading compact">
+          <p class="eyebrow">FAQ</p>
+          <h2>Questions people ask about AI agent memory.</h2>
+        </div>
+        <div class="faq-grid">
+          <article>
+            <h3>Can Glyph Hold provide memory for Hermes Agent?</h3>
+            <p>
+              Yes. The Hermes memory provider plugin connects Hermes Agent to Glyph Hold
+              through the public HTTP API for memory prefetch, memory management, and explicit
+              secret reveal tools.
+            </p>
+          </article>
+          <article>
+            <h3>Can Glyph Hold work with Codex?</h3>
+            <p>
+              Yes. Codex can use Glyph Hold through the standalone MCP server, giving Codex
+              access to memory search, prefetch, create, update, archive, revision restore,
+              and secret tools.
+            </p>
+          </article>
+          <article>
+            <h3>Is Glyph Hold free to self-host?</h3>
+            <p>
+              Yes. Glyph Hold is open source under the MIT License and runs with Docker using
+              SQLite for storage and SQLite FTS5 for search.
+            </p>
+          </article>
+          <article>
+            <h3>Does Glyph Hold use hosted AI APIs?</h3>
+            <p>
+              No. Glyph Hold does not call hosted LLMs, embeddings, vector databases, Ollama,
+              or paid APIs. It stores and searches durable memory deterministically.
+            </p>
+          </article>
         </div>
       </section>
     </main>
