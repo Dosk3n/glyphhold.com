@@ -6,3 +6,4 @@ The site links to:
 
 - [Glyph Hold](https://github.com/Dosk3n/glyphhold)
 - [Glyph Hold MCP](https://github.com/Dosk3n/glyphhold-mcp)
+- [Hermes Memory Glyph Hold](https://github.com/Dosk3n/hermes-memory-glyphhold)

@@ -12,7 +12,7 @@
     <meta property="og:title" content="Glyph Hold" />
     <meta
       property="og:description"
-      content="Self-hosted memory and secrets for AI agents. Local, deterministic, inspectable, and currently in beta."
+      content="Self-hosted memory and secrets for AI agents. Local, deterministic, inspectable, Docker-ready, and agent-friendly."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://glyphhold.com" />
@@ -31,6 +31,7 @@
         <a href="#why">Why</a>
         <a href="#install">Install</a>
         <a href="#mcp">MCP</a>
+        <a href="#hermes">Hermes</a>
         <a href="https://github.com/Dosk3n/glyphhold">GitHub</a>
       </nav>
     </header>
@@ -46,7 +47,7 @@
         <div class="hero-content">
           <div class="status-pill">
             <span class="status-dot" aria-hidden="true"></span>
-            Beta now, moving quickly
+            Version 1.0.0 available
           </div>
           <h1 id="hero-title">Glyph Hold</h1>
           <p class="hero-copy">
@@ -64,7 +65,7 @@
             </div>
             <div>
               <dt>Agent ready</dt>
-              <dd>HTTP API, API keys, MCP connector, and deterministic SQLite FTS5 search.</dd>
+              <dd>HTTP API, API keys, MCP connector, Hermes plugin, and SQLite FTS5 search.</dd>
             </div>
           </dl>
         </div>
@@ -77,7 +78,7 @@
             the current chat: project context, procedures, preferences, decisions, and secrets
             that should only be revealed when explicitly requested.
           </p>
-          <a href="https://github.com/Dosk3n/glyphhold">Follow the beta on GitHub</a>
+          <a href="https://github.com/Dosk3n/glyphhold">View the project on GitHub</a>
         </div>
       </section>
 
@@ -112,7 +113,7 @@
             <h3>Agent access</h3>
             <p>
               Create scoped API keys from the dashboard, then connect agents over HTTP or
-              through the standalone Glyph Hold MCP server.
+              through the standalone Glyph Hold MCP server and Hermes memory provider.
             </p>
           </article>
           <article class="feature">
@@ -129,13 +130,13 @@
       <section class="section split" aria-label="Current status">
         <div>
           <p class="eyebrow">Current Status</p>
-          <h2>Beta software, usable today, improving fast.</h2>
+          <h2>Version 1 is ready for real self-hosted use.</h2>
         </div>
         <div class="status-panel">
           <p>
-            Glyph Hold is already suitable for local agent memory experiments and practical
-            self-hosted use. It is still beta, so keep backups of the mounted data directory
-            and encryption key before upgrading.
+            Glyph Hold v1.0.0 is Docker-ready and usable today for local agent memory and
+            secrets. Keep backups of the mounted data directory and encryption key before
+            upgrading, especially when storing encrypted secrets.
           </p>
           <div class="check-list" aria-label="Current capabilities">
             <span>Docker image</span>
@@ -144,6 +145,8 @@
             <span>Memory revisions</span>
             <span>Secret reveal controls</span>
             <span>MCP connector</span>
+            <span>Hermes plugin</span>
+            <span>SQLite FTS5 search</span>
           </div>
         </div>
       </section>
@@ -164,7 +167,7 @@
               <h3>One-line start</h3>
               <button class="copy-button" type="button" data-copy-target="docker-command">Copy</button>
             </div>
-            <pre id="docker-command"><code>GLYPHHOLD_KEY="$(openssl rand -hex 32)" &amp;&amp; docker run -d --name glyphhold --restart unless-stopped -p 5995:5995 -v glyphhold-data:/data -e GLYPHHOLD_DB_PATH=/data/glyphhold.sqlite -e GLYPHHOLD_ENCRYPTION_KEY="$GLYPHHOLD_KEY" ghcr.io/dosk3n/glyphhold:0.2.0-beta &amp;&amp; printf 'Save this Glyph Hold encryption key: %s\n' "$GLYPHHOLD_KEY"</code></pre>
+            <pre id="docker-command"><code>GLYPHHOLD_KEY="$(openssl rand -hex 32)" &amp;&amp; docker run -d --name glyphhold --restart unless-stopped -p 5995:5995 -v glyphhold-data:/data -e GLYPHHOLD_DB_PATH=/data/glyphhold.sqlite -e GLYPHHOLD_ENCRYPTION_KEY="$GLYPHHOLD_KEY" ghcr.io/dosk3n/glyphhold:latest &amp;&amp; printf 'Save this Glyph Hold encryption key: %s\n' "$GLYPHHOLD_KEY"</code></pre>
           </article>
 
           <article class="code-panel">
@@ -174,7 +177,7 @@
             </div>
             <pre id="compose-command"><code>services:
   glyphhold:
-    image: ghcr.io/dosk3n/glyphhold:0.2.0-beta
+    image: ghcr.io/dosk3n/glyphhold:latest
     container_name: glyphhold
     ports:
       - "5995:5995"
@@ -191,18 +194,17 @@
           <li>Open <code>http://localhost:5995</code>.</li>
           <li>Create the first dashboard username and password.</li>
           <li>Create an agent API key from the dashboard.</li>
-          <li>Connect your agent directly over HTTP or through MCP.</li>
+          <li>Connect your agent directly over HTTP, MCP, or the Hermes plugin.</li>
         </ol>
       </section>
 
       <section id="mcp" class="section mcp-section">
         <div class="section-heading">
-          <p class="eyebrow">MCP Connector</p>
-          <h2>Use Glyph Hold from Codex and other MCP clients.</h2>
+          <p class="eyebrow">Agent Connectors</p>
+          <h2>Use Glyph Hold from Codex, Hermes, and other agents.</h2>
           <p>
-            The standalone MCP repo connects to Glyph Hold through the public HTTP API. It can
-            search memories, prefetch context, create and update memory, restore revisions,
-            manage secret metadata, and reveal secret values only when explicitly requested.
+            Glyph Hold stays focused on the core service. Agent integrations live in separate
+            repos and connect through the public HTTP API, so they can be updated independently.
           </p>
         </div>
         <div class="repo-links">
@@ -214,6 +216,32 @@
             <span>MCP connector</span>
             <strong>github.com/Dosk3n/glyphhold-mcp</strong>
           </a>
+          <a class="repo-link" href="https://github.com/Dosk3n/hermes-memory-glyphhold">
+            <span>Hermes memory provider</span>
+            <strong>github.com/Dosk3n/hermes-memory-glyphhold</strong>
+          </a>
+        </div>
+      </section>
+
+      <section id="hermes" class="section split" aria-label="Hermes integration">
+        <div>
+          <p class="eyebrow">Hermes</p>
+          <h2>Make Glyph Hold the external memory provider for Hermes Agent.</h2>
+        </div>
+        <div class="status-panel">
+          <p>
+            The Hermes plugin lets Hermes prefetch relevant Glyph Hold memories and use the
+            full memory and secret tool surface, including revision restore and explicit
+            secret reveal actions.
+          </p>
+          <div class="check-list" aria-label="Hermes plugin capabilities">
+            <span>Memory prefetch</span>
+            <span>Create and update</span>
+            <span>Archive and delete</span>
+            <span>Revision restore</span>
+            <span>Secret metadata</span>
+            <span>Explicit reveal</span>
+          </div>
         </div>
       </section>
 
@@ -225,15 +253,15 @@
         <div class="timeline">
           <div>
             <span>Now</span>
-            <p>Beta releases, Docker setup, dashboard, memories, secrets, API keys, MCP.</p>
+            <p>v1.0.0, Docker setup, dashboard, memories, secrets, API keys, MCP, and Hermes.</p>
           </div>
           <div>
             <span>Next</span>
-            <p>More polish, stronger recovery flows, clearer docs, and broader agent examples.</p>
+            <p>More connector hardening, stronger recovery flows, clearer docs, and broader agent examples.</p>
           </div>
           <div>
             <span>Then</span>
-            <p>A stable v1 for people who want dependable self-hosted memory for agents.</p>
+            <p>More integrations and operational polish for dependable self-hosted agent memory.</p>
           </div>
         </div>
       </section>
@@ -244,6 +272,7 @@
       <div>
         <a href="https://github.com/Dosk3n/glyphhold">Glyph Hold</a>
         <a href="https://github.com/Dosk3n/glyphhold-mcp">MCP</a>
+        <a href="https://github.com/Dosk3n/hermes-memory-glyphhold">Hermes</a>
       </div>
     </footer>
 
